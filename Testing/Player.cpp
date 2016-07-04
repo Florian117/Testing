@@ -7,11 +7,11 @@ namespace pUncia {
 	Player::Player(float posX, float posY) : mPosX(posX), mPosY(posY), mPlayerShape(20.f) {
 		mPlayerShape.setPosition(mPosX, mPosY);
 		mPlayerShape.setFillColor(sf::Color(222, 222, 143));
-		std::cout << "Player created" << std::endl;
+		std::cout << "Player Konstrunktor Aufruf" << std::endl;
 	}
 
 	Player::~Player() {
-		std::cout << "Player deleted" << std::endl;
+		std::cout << "Player Dekonstruktor Aufruf" << std::endl;
 	}
 
 	void Player::render(Game &game) {

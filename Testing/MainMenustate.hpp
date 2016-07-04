@@ -11,11 +11,13 @@ namespace pUncia {
 			MainMenustate();
 			~MainMenustate();
 
-			void update(Game &game);
-			void render(Game &game);
-			void handleEvents(Game &game);
+			void update(sf::RenderWindow &window);
+			void render(sf::RenderWindow &window);
+			void handleEvents(sf::RenderWindow &window);
 
 		private:
+			pUncia::Button mStartBtn;
+			pUncia::Button mExitBtn;
 
 	};
 }

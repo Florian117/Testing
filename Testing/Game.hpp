@@ -2,11 +2,11 @@
 
 #include <iostream>
 #include <memory>
-
 #include"SFML\Graphics.hpp"
+
 #include "Game.hpp"
-#include "Player.hpp"
-#include "Button.hpp"
+#include "Playstate.hpp"
+#include "MainMenustate.hpp"
 
 namespace pUncia {
 
@@ -26,20 +26,20 @@ namespace pUncia {
 		std::unique_ptr<sf::RenderWindow> mWindowPtr;
 
 		float mElapsedTime;
-		sf::Time mTime;
-		sf::Clock mClock;
+	
 
 	private:
 		sf::Event mEvent;
+		sf::Time mTime;
+		sf::Clock mClock;
 
 		float mWindowSizeX{1366.f};
 		float mWindowSizeY{768.f};
 
 		bool mRunningBvar = false;
 
-		pUncia::Player mPlayer;
-		pUncia::gui::Button mButton;
-		pUncia::gui::Button mAnotherBtn;
+		std::unique_ptr<Playstate> mPlaystatePtr;
+		std::unique_ptr<MainMenustate> mMainMenustatePtr;
 
 	};
 

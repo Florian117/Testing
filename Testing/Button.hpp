@@ -4,7 +4,6 @@
 #include "SFML\Graphics.hpp"
 
 namespace pUncia {
-	namespace gui {
 
 		class Game;
 
@@ -37,4 +36,3 @@ namespace pUncia {
 			};
 
 	}
-}

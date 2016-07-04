@@ -4,7 +4,6 @@
 #include "Game.hpp"
 
 namespace pUncia {
-	namespace gui {
 
 		Button::Button(float posX, float posY, std::string btnString) : mPosX(posX), mPosY(posY), mBtnString(btnString) {
 			if (!mBtnFont.loadFromFile("calibri.ttf")) {
@@ -22,6 +21,7 @@ namespace pUncia {
 		}
 
 		Button::~Button() {
+			std::cout << "Button Dekonstruktor Aufruf" << std::endl;
 		}
 
 
@@ -47,4 +47,3 @@ namespace pUncia {
 		}
 
 	}
-}

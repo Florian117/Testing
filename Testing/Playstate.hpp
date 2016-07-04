@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "Player.hpp"
 
 class Game;
@@ -16,6 +17,7 @@ namespace pUncia {
 			void handleEvents(Game &game);
 
 		private:
+			std::unique_ptr<Player> mPlayerPtr;
 
 	};
 

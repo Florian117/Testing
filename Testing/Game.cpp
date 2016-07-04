@@ -4,8 +4,10 @@
 
 namespace pUncia {
 
-		Game::Game() : mPlayer(1366 / 2, 768 / 2), mButton(40.0f, 40.0f, "Start"), mAnotherBtn(40.0f, 100.0f, "Beenden") {
+		Game::Game() {
 			mWindowPtr = std::unique_ptr<sf::RenderWindow>(new sf::RenderWindow(sf::VideoMode(int(mWindowSizeX), int(mWindowSizeY)), "Window"));
+			mPlaystatePtr = std::unique_ptr<Playstate>(new Playstate());
+			mMainMenustatePtr = std::unique_ptr<MainMenustate>(new MainMenustate());
 			mRunningBvar = true;
 			std::cout << "Game Started" << std::endl;
 		}
@@ -33,17 +35,15 @@ namespace pUncia {
 		void Game::render() {
 			mWindowPtr->clear(sf::Color(123, 123, 123));
 
-			mPlayer.render(*this);
-
-			mButton.render(*this->mWindowPtr);
-			mAnotherBtn.render(*this->mWindowPtr);
+			mPlaystatePtr->render(*this);
+			mMainMenustatePtr->render(*this->mWindowPtr);
 
 			mWindowPtr->display();
 		}
 
 		void Game::update() {
-			//std::cout << mElapsedTime << std::endl;
-			mPlayer.update(*this);
+			mPlaystatePtr->update(*this);
+			mMainMenustatePtr->update(*this->mWindowPtr);
 		}
 
 		void Game::handleEvents() {
@@ -51,14 +51,8 @@ namespace pUncia {
 				mRunningBvar = false;
 				mWindowPtr->close();
 			}
-			mPlayer.handleEvents(*this);
-			mButton.handleEvents(*this->mWindowPtr);
-			mAnotherBtn.handleEvents(*this->mWindowPtr);
-			if (mAnotherBtn.btnPressed()) {
-				mRunningBvar = false;
-				mWindowPtr->close();
-			}
-
+			mPlaystatePtr->handleEvents(*this);
+			mMainMenustatePtr->handleEvents(*this->mWindowPtr);
 		}
 
 		bool Game::isRunning() {
